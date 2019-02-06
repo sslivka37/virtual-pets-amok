@@ -41,6 +41,7 @@ public class OrganicDog  extends Dog implements OrganicPetTasks{
 	public void cleanCage() {
 		cageCleanliness += 100;
 		healthLevel += 25;
+		wasteLevel -= wasteLevel;
 	}
 	
 	

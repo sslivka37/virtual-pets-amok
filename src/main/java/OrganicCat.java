@@ -38,6 +38,7 @@ public class OrganicCat extends Cat implements OrganicPetTasks {
 	public void cleanLitterBox() {
 		litterBoxCleanliness += 100;
 		healthLevel += 25;
+		wasteLevel -= wasteLevel;
 	}
 
 	// organic behaviors

@@ -79,16 +79,16 @@ public class VirtualPetsAmokShelterApp {
 
 		// giving menu option
 
-		System.out.println(
-				"What would you like to do with the animals? \nPress 1 to feed all organic pets \nPress 2 to give all organic pets water"
+		System.out.println("What would you like to do with the animals? \nPress 1 to feed all organic pets \nPress 2 to give all organic pets water"
 						+ "\nPress 3 to walk all dogs \nPress 4 to clean all organic cat litterboxes \nPress 5 to clean all organic dog cages "
 						+ "\nPress 6 to oil all robotic pets \nPress 7 to play with a pet \nPress 8 to admit a pet \nPress 9 to adopt a pet"
-						+ "\nPress 10 to see the statuses of all pets again \nPress any other number to leave the shelter");
+						+ "\nPress 10 to see the statuses of all pets again "
+						+ "\nPress 11 to view the amount of waste in the organic animals' cages"+"\nPress any other number to leave the shelter");
 		int userMenuSelect = Integer.parseInt(input.nextLine());
 
 		// game loop
 
-		while (userMenuSelect >= 1 && userMenuSelect <= 10) {
+		while (userMenuSelect >= 1 && userMenuSelect <= 11) {
 			switch (userMenuSelect) {
 			case 1:
 				System.out.println("You feed all of the organic pets.");
@@ -139,6 +139,7 @@ public class VirtualPetsAmokShelterApp {
 					System.out.println("Not a valid choice, goodbye!");
 					System.exit(0);
 				}
+				shelter.tickAllPets();
 				break;
 
 			case 8:
@@ -231,6 +232,23 @@ public class VirtualPetsAmokShelterApp {
 						System.out.println("\tName: " + ((RoboDog) eachPet).getName() + "\tHealth Level: "
 								+ ((RoboDog) eachPet).getHealthLevel() + "\tHappiness Level: "
 								+ ((RoboDog) eachPet).getHappinessLevel());
+					}
+				}
+				break;
+				
+			case 11:
+				System.out.println("Here are the waste levels of the litterboxes:");
+				for(VirtualPetsSuper eachPet: shelter.getAllPets()) {
+					if (eachPet instanceof OrganicCat) {
+						System.out.println("\tName: "+ ((OrganicCat)eachPet).getName()
+								+ "\tLitter Box Waste Level: " + ((OrganicCat)eachPet).getWasteLevel());
+					}
+				}
+				System.out.println("Here are the waste levels of the dog cages:");
+				for(VirtualPetsSuper eachPet: shelter.getAllPets()) {
+					if (eachPet instanceof OrganicDog) {
+						System.out.println("\tName: "+ ((OrganicDog)eachPet).getName()
+								+ "\tCage Waste Level: " + ((OrganicDog)eachPet).getWasteLevel());
 					}
 				}
 				break;
